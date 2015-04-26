@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    <Description about="urn:mozilla:install-manifest">
+		<em:id>{a0108b30-8567-11e1-b0c4-0800200c9a66}</em:id>
+		<em:version>2.7</em:version>
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>0.1.*</em:minVersion>
+				<em:maxVersion>*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<em:name>PolyBrowser</em:name>
+		<em:hidden>true</em:hidden>
+		<em:unpack>true</em:unpack>
+		<em:creator>PolyBrowser</em:creator>
+		<em:homepageURL>http://www.Polysuite.com</em:homepageURL>
+		<!-- <em:aboutURL>chrome://polybrowser/content/contactUs.xul</em:aboutURL> --> 
+		<em:iconURL>chrome://polybrowser/skin/PolyBrowser.png</em:iconURL>
+		<!-- <em:optionsURL>chrome://polybrowser/content/FaceCust.xul</em:optionsURL> --> 
+    </Description>
+</RDF>

@@ -1,0 +1,17 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Hide Firefox tabs and content in background */
+#tabbrowser-tabs{height:1px; !important}
+#content{height:0px; !important}
+
+tabbrowser {
+  -moz-binding: url("chrome://PolyBrowser/content/polyTabbrowser.xml#tabbrowser");
+}
+
+statuspanel {
+  position: fixed;
+  bottom: 15px;
+  left: 0px;
+  z-index: 100;
+  flex: 0;
+} 

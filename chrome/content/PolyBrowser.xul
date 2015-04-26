@@ -1,0 +1,558 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://polybrowser/skin/style.css" type="text/css"?>
+ <overlay id="pBrowserOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://global/content/XPCNativeWrapper.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pContexMenuHelper.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pButtonEvents.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pMouseEvents.js"/>  
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pTabHelper.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pZoomHelper.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/pBrowserHelper.js"/>		
+	<script type="application/x-javascript" src="chrome://polybrowser/content/polyPrintUtils.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/polymarks.js"/>
+	<script type="application/x-javascript" src="chrome://polybrowser/content/polyname.js"/>
+	<script src="chrome://global/content/nsDragAndDrop.js"/>
+	<script src="chrome://global/content/nsTransferable.js"/>
+	<script src="chrome://global/content/globalOverlay.js"/>
+	
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_brand" src="chrome://branding/locale/brand.properties"/>
+    <stringbundle id="bundle_shell" src="chrome://browser/locale/shellservice.properties"/>
+    <stringbundle id="bundle_preferences" src="chrome://browser/locale/preferences/preferences.properties"/>
+  </stringbundleset>
+  
+	<!-- Add  commands-->
+  <commandset id="mainCommandSet">
+ 	   	<command id="cmd_newNavigatorTab" oncommand="pBrowserNewTabClick('');"/> 
+ 	   	<command id="Browser:SavePage" oncommand="PolySaveActive();"/>
+ 	   	<command id="Browser:Back"  oncommand="polyGoBackActive();"  disabled="false"/> <!--    oncommand="testButton();"  -->
+		<command id="Browser:BackOrBackDuplicate" oncommand="polyGoBackActive();" > <!--oncommand="polyGoBackActive();"   disabled="true"   -->
+		  <observes element="Browser:Back" attribute="disabled"/>
+		</command>  
+		<command id="Browser:Forward" oncommand="polyGoForwardActive();" disabled="false"/>
+		<command id="Browser:ForwardOrForwardDuplicate" oncommand="polyGoForwardActive();" disabled="false">
+		  <observes element="Browser:Forward" attribute="disabled"/>
+		</command>
+		<command id="Browser:Home"   oncommand="polyGoHome();"/>  
+		<command id="Browser:Stop"    oncommand="BrowserStop();" disabled="true"/>
+		 <command id="Browser:Reload"  oncommand="if (event.shiftKey) polyBrowserReloadSkipCache(); else polyReloadActive()" disabled="false"/>
+    	<command id="Browser:ReloadOrDuplicate" oncommand="polyBrowserReloadSkipCache()" disabled="false">
+     		 <observes element="Browser:Reload" attribute="disabled"/>
+    	</command>
+    	<command id="Browser:ReloadSkipCache" oncommand="polyBrowserReloadSkipCache()" disabled="false">
+     		 <observes element="Browser:Reload" attribute="disabled"/>
+    	</command>
+		 <command id="Browser:ReloadAllTabs" oncommand="reloadAll();" />
+		 <command id="Browser:ShowAllTabs" oncommand=""/>
+		<command id="Browser:NextTab" oncommand="pBrowserNextTab();" disabled="false"/> 
+		<command id="Browser:PrevTab" oncommand="pBrowserPrevTab();"/>
+ 	  	<command id="Browser:FocusNextFrame" oncommand="pBrowserNextTab();"/> <!-- focusNextFrame(event);  -->
+ 	   	<command id="cmd_close" oncommand="pBrowserCloseActive()"/> 
+ 	    <command id="cmd_fullZoomEnlarge" 	oncommand="changeZoom(-1, event);"/>
+ 	    <command id="cmd_fullZoomReduce"  	oncommand="changeZoom(1, event);"/>
+ 	    <command id="cmd_find"	oncommand="findLaunch();;"/> 
+ 	    <command id="cmd_findAgain" style="display:none;" hidden="true"/>
+ 	    <command id="Escape"	oncommand="escapeKey();"/>    
+		<command id="Browser:AddBookmarkAs" oncommand="polyBookmarkActive();"/>
+		<command id="cmd_print" oncommand="PolyPrintSupport();"/>
+    	<command id="cmd_printPreview" oncommand="PolyPrintPreviewSupport();"/>
+    	<command id="SearchSidebar" oncommand="openSideBar();"/>
+    	<command id="Tools:Search" oncommand="selectActiveAddressBar();"/>
+    	<command id="Browser:ToggleTabView" oncommand=""/>
+ 	</commandset> 
+
+<!-- Right click menu --> 
+	<menupopup id="contentAreaContextMenu" pagemenu="start"
+               onpopupshowing="if (event.target != this)
+                                 return true;
+                               gContextMenu = new nsContextMenu(this, event.shiftKey);
+                               if (gContextMenu.shouldDisplay)
+                                window.onmouseup = updateEditUIVisibility;
+                               return gContextMenu.shouldDisplay;"  
+               
+               onpopuphiding="if (event.target != this)
+                                return;
+                              gContextMenu.hiding();
+                              gContextMenu = null;
+                              updateEditUIVisibility();">
+ 		<!--  <menuitem id="context-openlinkintab"
+                label="Open Link in New Tab"
+                oncommand="ContextMenuHandler(event)"/>  -->
+	<menugroup id="context-navigation" style="display:none;" hidden="true"></menugroup>
+	<menuseparator id="context-sep-navigation" style="display:none;" hidden="true"/>
+		  <menuitem id="context-reload" label ="Reload"  hidden="false" oncommand="polyReloadActive();"/>
+		  <menuitem id="context-stop" label ="New Stop" style="display:none;" hidden="true"/>
+		  <menuitem id="context-back" style="display:none;" hidden="true"/>
+		  <menuitem id="context-forward" style="display:none;" hidden="true"/>  
+		  <menuitem id="context-sep-stop" style="display:none;" hidden="true"/>  
+  <!--   <menuitem id="context-searchselect"
+                oncommand="BrowserSearch.loadSearchFromContext(getBrowserSelection());" style="display:none;" hidden="true"/>  -->  
+	<menuitem id="context-inspect" style="display:none;" hidden="true" /> <!-- style="display:none;" hidden="true"-->
+	</menupopup> 
+	
+	<keyset id="mainKeyset">
+		<key keycode="VK_BACK" command="Browser:Back"/>
+    	<key keycode="VK_BACK" command="Browser:Back" modifiers="shift"/>
+    	<key id="goBackKb"  keycode="VK_LEFT" command="Browser:Back" modifiers="alt"/>
+    	<key id="goForwardKb"  keycode="VK_RIGHT" command="Browser:Forward" modifiers="alt"/>
+    	<key id="goHome" keycode="VK_HOME" command="Browser:Home" modifiers="alt"/>
+		<key id="key_stop" keycode="VK_ESCAPE" command="Escape"/> 
+		<key keycode="VK_F5" oncommand="polyReloadActive()"/>
+		<key keycode="VK_F5" oncommand="polyBrowserReloadSkipCache()" modifiers="accel"/>
+ <!--		<key keycode="VK_TAB" oncommand="pBrowserNextTab()" modifiers="control"/>  -->
+ 		<key keycode="VK_TAB" oncommand="pBrowserPrevTab()" modifiers="control, shift"/> 
+   		<key id="key_selectTab1" oncommand="pBrowserGoTabIndex(0);" key="1" modifiers="accel"/>
+	   <key id="key_selectTab2" oncommand="pBrowserGoTabIndex(1);" key="2" modifiers="accel"/>
+	   <key id="key_selectTab3" oncommand="pBrowserGoTabIndex(2);" key="3" modifiers="accel"/>
+	   <key id="key_selectTab4" oncommand="pBrowserGoTabIndex(3);" key="4" modifiers="accel"/>
+	   <key id="key_selectTab5" oncommand="pBrowserGoTabIndex(4);" key="5" modifiers="accel"/>
+	   <key id="key_selectTab6" oncommand="pBrowserGoTabIndex(5);" key="6" modifiers="accel"/>
+	   <key id="key_selectTab7" oncommand="pBrowserGoTabIndex(6);" key="7" modifiers="accel"/>
+	   <key id="key_selectTab8" oncommand="pBrowserGoTabIndex(7);" key="8" modifiers="accel"/>
+	   <key id="key_selectLastTab" oncommand="pBrowserGoTabLast();" key="9" modifiers="accel"/>
+
+
+	</keyset>
+
+
+<!-- Expanded top menu (Mac) --> 
+<menubar id="main-menubar"
+                onpopupshowing="if (event.target.parentNode.parentNode == this &amp;&amp;
+                                    !('@mozilla.org/widget/nativemenuservice;1' in Cc))
+                                  this.setAttribute('openedwithkey',
+                                                    event.target.parentNode.openedWithKey);"
+                style="border:0px;padding:0px;margin:0px;-moz-appearance:none">  
+    <menu id="file-menu" label="File" >
+    	<menupopup id="menu_FilePopup">
+			<!--    <menuitem id="menu_savePage" style="display:none;" hidden="true"/> -->
+                <menuitem id="menu_sendLink" style="display:none;" hidden="true"/>
+				<menuitem id="menu_printSetup" style="display:none;" hidden="true"/>
+                <menuitem id="menu_printPreview" style="display:none;" hidden="true"/>
+                <menuitem id="goOfflineMenuitem" style="display:none;" hidden="true" />
+                <menuitem id="PolyGoOfflineMenuitem"
+                          label="Work Offline"
+                          type="checkbox"
+                          observes="workOfflineMenuitemState"
+                          oncommand="BrowserOffline.toggleOfflineStatus();"
+                          insertafter="goOfflineMenuitem"/>
+  		  </menupopup>
+    </menu>	
+    <menu id="view-menu" label="View" >
+    	    <menupopup id="menu_viewPopup"
+                         onpopupshowing="updateCharacterEncodingMenuState();">
+                         
+                	<menu id="viewToolbarsMenu" style="display:none;" hidden="true"
+                      label="Toolbars">
+                  <menupopup onpopupshowing="onViewToolbarsPopupShowing(event);">
+                <menuitem  type="checkbox"
+                          oncommand="onViewToolbarCommand(event)"
+                          label="Bookmarks Toolbar" style="display:none;" hidden="true"/>
+                    <menuseparator/>
+                    <menuitem id="menu_customizeToolbars"
+                              label="Customize"
+                              command="cmd_CustomizeToolbars"/>
+                  </menupopup>
+                </menu>
+                <menu id="viewSidebarMenuMenu"
+                      label="Sidebars">
+                  <menupopup id="viewSidebarMenu">
+                    <menuitem id="menu_bookmarksSidebar"
+                              key="viewBookmarksSidebarKb"
+                              observes="viewBookmarksSidebar"/>
+                    <menuitem id="menu_historySidebar"
+                              key="key_gotoHistory"
+                              observes="viewHistorySidebar"
+                              label="History"/>
+                    <menuitem id="menu_searchSidebar"
+                              key="key_gotoHistory"
+                              observes="viewHistorySidebar"
+                              command="SearchSidebar"
+                              label="Search"/>
+                    <menuitem id="menu_socialSidebar"
+                              type="checkbox"
+                              autocheck="false"
+                              command="Social:ToggleSidebar"/>
+                  </menupopup>
+                </menu>
+                <menuitem id="menu_stop" style="display:none;" hidden="true"/>
+                <menuitem id="menu_reload" style="display:none;" hidden="true"/>
+                <menu id="viewFullZoomMenu" label="Zoom" style="display:none;" hidden="true"/>
+				<menu id="polyViewFullZoomMenu" label="Zoom" insertafter="menu_reload">
+                  <menupopup>
+                    <menuitem id="menu_zoomEnlarge"
+                              key="key_fullZoomEnlarge"
+                              label="Zoom In"
+                              command="cmd_fullZoomEnlarge"/>
+                    <menuitem id="menu_zoomReduce"
+                              key="key_fullZoomReduce"
+                              label="Zoom Out"
+                              command="cmd_fullZoomReduce"/>
+					</menupopup>
+                </menu>
+                <menuitem id="poly_menu_reload"
+                          label="Reload All Tabs"
+                          command="Browser:ReloadAllTabs"
+                          insertbefore="pageStyleMenu"/>
+                <menu id="pageStyleMenu" style="display:none;" hidden="true" />
+                
+                <menu id="charsetMenu" style="display:none;" hidden="true" />
+	</menupopup>
+</menu>	
+			<menupopup id="history-menu"
+                  label="History">
+              <menupopup id="goPopup"  
+              			 placespopup="true"
+                         oncommand="this.parentNode._placesView._onCommand(event);"
+                         onclick="checkForMiddleClick(this, event);"
+                         onpopupshowing="if (!this.parentNode._placesView)
+                                           new HistoryMenu(event);"
+                         tooltip="bhTooltip"
+                         popupsinherittooltip="true">
+                <menuitem id="historyMenuBack" style="display:none;" hidden="true" />
+                <menuitem id="historyMenuForward" style="display:none;" hidden="true" />
+                <menuitem id="historyMenuHome" style="display:none;" hidden="true" />
+                <menuseparator id="historyMenuHomeSeparator" style="display:none;" hidden="true"/>
+                <menuitem id="menu_showAllHistory"
+                          label="Show All History"
+                          key="showAllHistoryKb"
+                          command="Browser:ShowAllHistory"/>
+                <menuitem id="sanitizeItem" style="display:none;" hidden="true" />
+
+                <menuitem id="sync-tabs-menuitem" style="display:none;" hidden="true" />
+                <menuitem id="historyRestoreLastSession" style="display:none;" hidden="true" />
+                <menu id="historyUndoMenu" style="display:none;" hidden="true" >
+                        <menupopup id="historyUndoPopup" style="display:none;" hidden="true" />
+                </menu>
+                <menu id="historyUndoWindowMenu" style="display:none;" hidden="true">
+               		 <menupopup id="historyUndoWindowPopup" style="display:none;" hidden="true" />
+                </menu>
+                <menuitem id="polySanitizeItem"
+                          label="Clear History"
+                          key="key_sanitize"
+                          command="Tools:Sanitize" insertafter="historyRestoreLastSession"/>
+              </menupopup>
+        </menupopup>
+        
+	  <menu id="bookmarksMenu"
+	label="Bookmarks"
+	ondragenter="PlacesMenuDNDHandler.onDragEnter(event);"
+	ondragover="PlacesMenuDNDHandler.onDragOver(event);"
+	ondrop="PlacesMenuDNDHandler.onDrop(event);">
+		    <menupopup id="bookmarksMenuPopup"
+               placespopup="true"
+               context="placesContext"
+               openInTabs="children"
+               oncommand="BookmarksEventHandler.onCommand(event, this.parentNode._placesView);"
+               onclick="BookmarksEventHandler.onClick(event, this.parentNode._placesView);"
+               onpopupshowing="PlacesCommandHook.updateBookmarkAllTabsCommand();
+                               if (!this.parentNode._placesView)
+                                 new PlacesMenu(event, 'place:folder=BOOKMARKS_MENU');"
+               tooltip="bhTooltip" popupsinherittooltip="true">
+	            	<menuitem id="menu_bookmarkAllTabs" style="display:none;" hidden="true"/>
+	        	</menupopup>
+	    </menu>
+	<menu id="tools-menu"
+                  label="Tools" >
+              <menupopup id="menu_ToolsPopup">
+                    <menuitem id="menu_search" style="display:none;" hidden="true"/>
+              <menuseparator id="browserToolsSeparator"
+                             class="show-only-for-keyboard" style="display:none;" hidden="true"/>
+              <menuitem id="menu_openAddons" style="display:none;" hidden="true"/>
+              <!-- only one of sync-setup or sync-menu will be showing at once -->
+            <menuitem id="sync-setup"
+                        style="display:none;" hidden="true"
+                        insertafter="menu_pageInfo"
+                        />
+                        <menuitem id="menu_openApps" style="display:none;" hidden="true"/>
+              <menuseparator id="devToolsSeparator" style="display:none;" hidden="true"/>
+           <!--   <menu id="webDeveloperMenu" style="display:none;" hidden="true"/>  -->
+              <menuitem id="menu_pageInfo" style="display:none;" hidden="true"/>
+              </menupopup>
+        </menu>
+       <menu id="top_help_menu" label="Help" insertafter="tools-menu">
+          <menupopup id="topmenu_helpMenuPopup" label="Help">
+			<menuitem id="top_appmenu_openHelp" style="display:none;" hidden="true"/>
+            <menuitem id="poly_topmenu_openHelp"
+                      label="Help"
+                      oncommand="pBrowserNewTabClick('http://polybrowser.com/faqs');"
+                      insertafter="top_appmenu_openHelp"/>
+            <menuitem id="top_appmenu_gettingStarted"
+                      label="Getting Started"
+                      oncommand="pBrowserNewTabClick('http://polysuite.com/PolyBrowser/Welcome/');"/>
+            
+			<menuitem id="top_appmenu_healthReport" style="display:none;" hidden="true"/>
+            <menuitem id="top_appmenu_troubleshootingInfo"
+                      label="Troubleshooting"
+                      oncommand="openTroubleshootingPage()"
+                      onclick="checkForMiddleClick(this,event);"/>
+
+            <menuitem id="top_appmenu_safeMode" style="display:none;" hidden="true"/>
+            <menuitem id="top_appmenu_feedbackPage" style="display:none;" hidden="true"/>
+            <menuitem id="top_poly_feedbackPage"
+                      label="Submit Feedback"
+                      oncommand="pBrowserNewTabClick('http://polybrowser.com/forums');" insertafter="appmenu_safeMode"/>
+            <menuitem id="top_appmenu_about"
+                      label="About PolyBrowser"
+                      oncommand="openAboutDialog();"/>
+         </menupopup>
+		</menu>
+	    
+	    <menu id="helpMenu" style="display:none;" hidden="true" />
+</menubar>
+  
+    <menu id="helpMenu"
+          label="Help">
+      <menupopup id="menu_HelpPopup" onpopupshowing="buildHelpMenu();">
+        <menuitem id="menu_openHelp"
+                  oncommand="pBrowserNewTabClick('http://polybrowser.com/faqs');"
+                  onclick="checkForMiddleClick(this, event);"
+                  label="Frequently Asked Questions"
+                  key="key_openHelpMac"/>
+        <menuitem id="menu_openTour" style="display:none;" hidden="true"/>
+        <menuitem id="menu_keyboardShortcuts" style="display:none;" hidden="true"/>
+        <menuitem id="healthReport" style="display:none;" hidden="true"/>
+        <menuitem id="menu_gettingStarted" insertafter="healthReport"
+                      label="Getting Started"
+                      oncommand="pBrowserNewTabClick('http://polysuite.com/PolyBrowser/Welcome/');"/>
+        <menuitem id="troubleShooting"
+                  label="Troubleshooting"
+                  oncommand="openTroubleshootingPage()"
+                  onclick="checkForMiddleClick(this, event);"/>
+        <menuitem id="feedbackPage"
+                  label="Help Forum"
+                  oncommand="pBrowserNewTabClick('http://polybrowser.com/forums');"
+                  onclick="checkForMiddleClick(this, event);"/>
+        <menuitem id="helpSafeMode"
+                  label="Restart in Safe Mode"
+                  oncommand="safeModeRestart();"/>
+        <menuitem id="aboutName"
+                  style="display:none;" hidden="true"/>
+            <menuitem id="aboutPolyBrowser" insertafter="aboutName"
+                  label="About PolyBrowser"
+                  oncommand="openAboutDialog();"/>
+      </menupopup>
+    </menu>
+      
+<panel id="PanelUI-popup"
+       role="group"
+       type="arrow"
+       hidden="true"
+       flip="slide"
+       animate="false"
+       position="bottomcenter topright"
+       noautofocus="true">
+  <panelmultiview id="PanelUI-multiView" mainViewId="PanelUI-mainView">
+   		 	<panelview id="PanelUI-mainView" context="customizationPanelContextMenu">
+    			 <footer id="PanelUI-footer">
+        			<toolbarbutton id="PanelUI-fxa-status"
+						style="display:none;"
+                       hidden="true"/>
+                    </footer>
+    		</panelview>
+    </panelmultiview>
+</panel>
+    
+<vbox id="titlebar" >
+  <hbox id="titlebar-content" >
+    <spacer id="titlebar-spacer" flex="1"/>
+    <hbox id="titlebar-buttonbox-container">
+      <hbox id="titlebar-buttonbox">
+        <toolbarbutton class="titlebar-button" id="titlebar-min" oncommand="window.minimize();"/>
+        <toolbarbutton class="titlebar-button" id="titlebar-max" oncommand="onTitlebarMaxClick();"/>
+        <toolbarbutton class="titlebar-button" id="titlebar-close" command="cmd_closeWindow"/>
+      </hbox>
+    </hbox>
+    <!-- OS X does not natively support RTL for its titlebar items, so we prevent this secondary
+         buttonbox from reversing order in RTL by forcing an LTR direction. -->
+    <hbox id="titlebar-secondary-buttonbox" dir="ltr">
+    <!--  <hbox class="private-browsing-indicator"/> -->
+      <hbox id="titlebar-fullscreen-button" />
+    </hbox>
+  </hbox>
+</vbox>
+    
+	<!-- Hide nav bar - needed for the Mac version  
+	<toolbar id="nav-bar" flex="0" height="16" class="tabContainerUtility">-->
+	
+	<toolbar id="nav-bar" class="toolbar-primary chromeclass-toolbar"
+     
+             fullscreentoolbar="true" mode="icons" customizable="true"
+             iconsize="small"
+             defaultset="urlbar-container,search-container,webrtc-status-button,bookmarks-menu-button,downloads-button,home-button,social-share-button,social-toolbar-item"
+             customizationtarget="nav-bar-customization-target"
+             overflowable="true"
+             overflowbutton="nav-bar-overflow-button"
+             overflowtarget="widget-overflow-list"
+             overflowpanel="widget-overflow"
+             context="toolbar-context-menu">
+       <hbox id="nav-bar-customization-target" flex="1">      
+        	<toolbaritem id="urlbar-container" style="height:0px;visibility:collapse;"></toolbaritem> <!--  -->
+		<!--	<toolbaritem id="search-container" style="height:0px;display:none;"></toolbaritem> -->
+			<toolbarbutton id="home-button" style="height:0px;display:none;"/>
+			<toolbarbutton id="bookmarks-menu-button"
+                       class="toolbarbutton-1 chromeclass-toolbar-additional"
+                       persist="class"
+                       removable="true"
+                       label="Bookmark Menu"
+                       tooltip="dynamic-shortcut-tooltip"
+                       anchor="dropmarker"
+                       ondragenter="PlacesMenuDNDHandler.onDragEnter(event);"
+                       ondragover="PlacesMenuDNDHandler.onDragOver(event);"
+                       ondragleave="PlacesMenuDNDHandler.onDragLeave(event);"
+                       ondrop="PlacesMenuDNDHandler.onDrop(event);"
+                       cui-areatype="toolbar"
+                       type="menu"
+                       oncommand="BookmarkingUI.onCommand(event);"></toolbarbutton>
+		</hbox>		
+	</toolbar> 
+
+	
+	<!-- Hide tabs - needed for the Mac version  Must use height:0px !important, but DONT use display:none - will break it -->
+	<toolbar id="TabsToolbar" flex="1" height="0" style="height:0px !important; position:fixed;top: 22px !important;left: -5000px;"></toolbar>s
+	
+	
+	
+	<!-- Hides the main FF container-->
+	<hbox id="browser">
+<!--		<panel id="dragTabPanel" class="dragTabClass" width="40" height="20"></panel> -->
+		<vbox id="appcontent" style="overflow:hidden;" flex="1" >
+			<hbox id="polyTabContainer" insertbefore="content"  > <!--  -->
+				<hbox id="tabContainer" closebutton="true" context="clipmenu" oncontextmenu="MousePositionHandler(event)" ondblclick="polyTabPanelDoubleClicked(event)"  flex="1" ondragover="nsDragAndDrop.dragOver(event, boardObserver)" ondragdrop="nsDragAndDrop.drop(event, boardObserver)">
+					<vbox pack="center" style="padding: 3px 10px" id="polyHomeWrapper"  >
+						<hbox >
+							<image src="chrome://polybrowser/skin/polybrowser-logo.png" id="polyHome" width="150" height="27" onclick="openSideBar();"/>
+							<!-- <image src="chrome://polybrowser/skin/polybrowser-logo.png" id="polyHome" width="159" height="27" popup="PolyHomePopup"/> -->
+						</hbox>
+					</vbox>
+					
+					<arrowscrollbox orient="horizontal"  id="tabArrowScroller" flex="0" ></arrowscrollbox>  
+					<vbox id="waitIndicator" width="23" height="23" pack="center"  flex="0" class="wait-indicator"></vbox>
+					<box id="newTab" onclick="pBrowserNewTabClick('')" style="-moz-appearance:none;margin:0px;padding:0px;border:0px" >
+						<hbox>
+							<vbox pack="center">
+								<image src="chrome://polybrowser/skin/Tabbar_NewTabnormal.png" style="-moz-behavior:none" onmouseover="buttonMouseOver(event)" onmouseout="buttonMouseOut(event)"/>
+								
+							</vbox>
+						</hbox>
+					</box>
+					
+				</hbox>
+				<hbox id="utilityContainer">
+					<hbox class="tabContainerUtility" ondragdrop="nsDragAndDrop.drop(event, boardObserver)" width="36" align="left">
+						<image src="chrome://polybrowser/skin/16.png" width="22" height="36" popup="AliBar-Post-Button-Menu-Popup" onload="RepositionNewTab()"/>
+					</hbox>
+
+					<hbox id="tabContainerWithZoom" class="tabContainerUtility" width="26" align="left">
+						<image src="chrome://polybrowser/skin/Zoom-Button.png" width="22" height="36" onclick="openZoomPopup(event)"/>
+					</hbox>
+
+				</hbox>
+			<!-- Main browser container for content --> 
+			</hbox>				
+			<hbox id="browserContainer" insertafter="PersonalToolbar" flex="1"  pack="center" onmousedown="OnMouseDown(event)" onmouseup="OnMouseUp(event)"  contenttooltip="aHTMLTooltip"   ondragover="nsDragAndDrop.dragOver(event, boardObserver)" ondragdrop="nsDragAndDrop.drop(event, boardObserver)"   > <!-- oncontextmenu="MousePositionHandler(event)"   ondblclick="whichButton(event);"  onscroll="polyBrowserContainerScrolled()"  onmousemove="OnMouseMove(event);"  contentcontextmenu="contentAreaContextMenu"   onmousedown="detectDrag(event);" onmousedown="OnMouseDown(event)"-->
+			<!--	<hbox id="slideController" height="1" width="1" style="height:1px;width:1px;visibility:collapsed;"></hbox> -->
+			</hbox>
+
+			<panel id="zoomControl" type="arrow" >
+				<hbox>
+					<scale id="zoomScale" min="5" max="8" dir="reverse" orient="vertical" onchange="setZoomValue()" onmouseover="zoomMouseOver()" onmouseleave="zoomMouseLeave()"/>
+					<image src="chrome://polybrowser/skin/zoom-scale.png" width="40" height="110" />
+				</hbox>
+			</panel>
+		 	
+		 	<tabbrowser id="content" flex="0" style="height:0px;visibility:collapse;" height="0" /><!-- height:0px;visibility:collapse;  -->
+			<findbar id="FindToolbar" hidden="true" style="display:none;" /> 
+			<panel id="polybrowser_autocomplete" type="autocomplete" noautofocus="true" />
+			
+			<popupset>
+				
+				<menupopup id="clipmenu" onpopupshowing="HideContextMenuItems()">
+					<menuitem label="Copy" id="polyCopy" oncommand="ContextMenuHandler(event)" hidden="true" />
+					<separator class="groove" id="contextSeparator6" hidden="true"/>
+					<menuitem label="New Tab" accesskey="N" id="openNewTab" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Duplicate" accesskey="D" id="openDuplicate" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Reload All" accesskey="O" id="reloadAll" oncommand="ContextMenuHandler(event)" />
+					<separator class="groove" id="contextSeparator4"/>
+					<menuitem label="Close Tab" accesskey="S" id="closeCurrent" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Close Other Tabs" accesskey="E" id="closeOther" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Close Tabs to the Left" id="closeLeft" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Close Tabs to the Right" id="closeRight" oncommand="ContextMenuHandler(event)" />
+					<separator class="groove" id="contextSeparator5"/>
+					<menuitem label="Open Link in New Tab" accesskey="T" id="openLinkTab" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Open Link in New Tab and Go" accesskey="G" id="openLinkTabGo" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Open Link in New Window" accesskey="W" id="openLinkWindow" oncommand="ContextMenuHandler(event)" />
+					<separator class="groove" id="contextSeparator1"/>
+					<menuitem label="Scroll to top" accesskey="L"  id="gotoTop" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Scroll to bottom" accesskey="M" id="gotoBottom" oncommand="ContextMenuHandler(event)" />
+					<separator class="groove" id="contextSeparator2"/>
+					<menuitem label="Back" accesskey="B" id="gotoBack" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Forward" accesskey="F" id="gotoForward" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Reload" accesskey="R" id="gotoReload" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="Stop" accesskey="S" id="gotoStop" oncommand="ContextMenuHandler(event)" />
+					<separator class="groove" id="contextSeparator3"/>
+					<menuitem label="(Un)/Bookmark This Page" accesskey="K" id="bookmarkThisPage" oncommand="ContextMenuHandler(event)" />
+					<menuitem id="tab-context-superstart-add" label="Add Page to Speed Launcher"  oncommand="SuperStart.onTabContextMenuAdd();" />
+					<menuitem label="Print" accesskey="P" id="printthispage" oncommand="PolyPrintSupport()" />
+					<separator class="groove" id="contextSeparator4"/>
+					<menuitem label="View Page Source" accesskey="V" id="openPageSource" oncommand="ContextMenuHandler(event)" />
+					<menuitem label="View Cache Information" accesskey="C" id="openCache" oncommand="ContextMenuHandler(event)" />
+					<menuitem id="context-inspect" hidden="true" style="display:none;" />
+					<!-- <menuitem label="View Addons Manager" accesskey="A" id="OnMouseMoveopenAddonsManager" oncommand="ContextMenuHandler(event)" /> -->
+				</menupopup>
+				
+				<!-- PolyMarks popup menu --> 
+				<menupopup id="AliBar-Post-Button-Menu-Popup" onpopupshowing="MenuPropagating(event)" position="after_start">
+						<menu label="Add to my PolyMarks" id="AliBar-Post-Button-Menu-Popup-Inside" hidden="true">
+							<menupopup>
+								<menuseparator/>
+								<menuitem label="Add to New PolyMark" oncommand="AddToNewPolyMark(event)"/>
+							</menupopup>
+						</menu>
+						<menuitem label="Save Tabs as PolyMark" oncommand="CreateNewPolymark(event)"/>
+						<menuseparator id="separator_id2"/>
+						<menuitem label="No PolyMarks created" id="__user_item__" disabled="true" hidden="true"/>
+						<menuseparator id="separator_id" hidden="true"/>  
+						<menuitem label="Manage My PolyMarks" id="AliBar-Post-Button-Manage-PolyMarks" oncommand="GoToMyPolymarks(event)" hidden="true"/>
+						<menuitem label="Login or Sign Up" id="AliBar-Post-Button-Login" oncommand="Login(event)" hidden="false"/>
+				</menupopup>
+			</popupset>
+			
+			
+			<keyset id="polyKeyset">
+				<key modifiers="accel" key="P" oncommand="PolyPrintSupport()"/>
+			<!--	<key modifiers="accel" key="F" oncommand="PolyFindSupport()"/> -->
+				<key modifiers="accel" key="S" oncommand="PolySaveSupport()"/>
+				<key modifiers="accel" key="D" oncommand="PolyBookmarkSupport()"/>
+			</keyset>
+	<!--
+			<panel id="waitIndicator" style="background-color:white;" width="22" height="16" noautohide="true">
+				<hbox width="22" height="16">
+					<image src="chrome://polybrowser/skin/loading.gif" height="16" width="16"/>
+				</hbox>
+			</panel>			
+		-->	
+			<!-- Holds tabs and scroller -->
+			
+		</vbox>
+	</hbox>
+
+	<toolbarbutton id="PanelUI-customize" label="Customize PolyBrowser"
+                         exitLabel="End Customize"
+                         tooltiptext=""
+                         exitTooltiptext=""
+                         closemenu="none"
+                         oncommand="pCustomizeModeToggle();"/>
+                         
+    
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pTabDragHelper.js"/>	
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pLoadHelper.js"/>
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pObserverHelper.js"/>
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pInstallHelper.js"/>
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pUpdateHelper.js"/>
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pSessionHelper.js"/>
+		<script type="application/x-javascript" src="chrome://polybrowser/content/pFindHelper.js"/>
+
+		
+	
+</overlay>
