@@ -1,1 +1,1 @@
-Welcome to the PolyBrowser open-source repositor.
+Welcome to the PolyBrowser open-source repository.
