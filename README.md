@@ -3,7 +3,7 @@
 
 **Let's reimagine how people browse the web, together.**
 </br>
-###A New Way to Browse
+##A New Way to Browse
 
 <img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="left" hspace="15" vspace="6">
 * **Panoramic Navigation** Stitches websites together
@@ -11,9 +11,9 @@
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
 * [**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)
 </br>
-###Source Code
+##Source Code
 To understand the source code and build PolyBrowser, you need to visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
 </br>
-###License
+##License
 * PolyBrowser is provided under the Mozilla Public License (MPL2.0) (https://www.mozilla.org/MPL/2.0/)
 * The name "PolyBrowser" as well as logos and images provided are trademarks of PolySuite, LLC, all rights reserved
