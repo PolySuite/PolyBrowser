@@ -10,7 +10,7 @@
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
 * [**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)
-</br>
+</br></br>
 
 ##Source Code
 To understand the source code and build PolyBrowser, you need to visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
