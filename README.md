@@ -1,9 +1,9 @@
-#<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser, the Panoramic Web Browser
+#<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser
 
 
 **Let's reimagine how people browse the web, together.**
 </br>
-#About
+#A New Way to Browse
 
 <img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="left" hspace="15" vspace="6">
 * **Panoramic Navigation** Stitches websites together
