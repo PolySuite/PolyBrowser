@@ -1,4 +1,4 @@
-#<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser
+#<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser, the Panoramic Web Browser
 
 
 **Let's reimagine how people browse the web, together.**
