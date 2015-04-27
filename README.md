@@ -1,7 +1,7 @@
 #<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser
 
 
-**Let's reimagine how people browse the web, together.**
+**Let's reimagine web browsing, together.**
 </br>
 ##A New Way to Browse
 
