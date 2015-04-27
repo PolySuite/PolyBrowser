@@ -18,4 +18,4 @@ To understand the source code and build PolyBrowser, you need to visit the [Poly
 
 ##License
 * PolyBrowser is provided under the Mozilla Public License (MPL2.0) (https://www.mozilla.org/MPL/2.0/)
-* The name "PolyBrowser" as well as logos and images provided are trademarks of PolySuite, LLC, all rights reserved
+* The name "PolyBrowser" as well as logos and images provided are trademarks of [PolySuite, LLC](http://polysuite.com), all rights reserved
