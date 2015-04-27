@@ -5,7 +5,7 @@
 </br>
 ##A New Way to Browse
 
-<img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="left" hspace="15" vspace="6">
+<img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="right" hspace="15" vspace="6">
 * **Panoramic Navigation** Stitches websites together
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
