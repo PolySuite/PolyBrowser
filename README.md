@@ -2,8 +2,8 @@
 
 
 **Let's reimagine how people browse the web, together.**
-</br></br></br>
-#About Polybrowser
+</br>
+#About
 
 <img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="left" hspace="15" vspace="6">
 * **Panoramic Navigation** Stitches websites together
