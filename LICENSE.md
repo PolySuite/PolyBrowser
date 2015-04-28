@@ -1,5 +1,8 @@
 #License
 
+* PolyBrowser is provided under the Mozilla Public License (MPL2.0) (https://www.mozilla.org/MPL/2.0/)
+* The name "PolyBrowser" as well as logos and images provided are trademarks of PolySuite, LLC, all rights reserved
+
 
 Mozilla Public License
 Version 2.0
