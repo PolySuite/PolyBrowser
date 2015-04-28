@@ -2,7 +2,7 @@
 
 
 **Let's reimagine web browsing, together.**
-</br>
+</br></br>
 ##A New Way to Browse
 
 <img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="right" hspace="15" vspace="6">
