@@ -13,7 +13,7 @@
 </br></br>
 
 ##Source Code
-To understand the source code and build PolyBrowser, you need to visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
+To understand the source code and build PolyBrowser, visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
 </br>
 
 ##Contributing
