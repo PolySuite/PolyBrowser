@@ -16,6 +16,9 @@
 To understand the source code and build PolyBrowser, you need to visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
 </br>
 
+##Contributing
+All contributions are welcome. Send us a Pull Request.    Submit bugs and feature requests to the Issue Tracker in this repo. For more information, email info (at) polysuite.com.
+
 ##License
 * PolyBrowser is provided under the Mozilla Public License (MPL2.0) (https://www.mozilla.org/MPL/2.0/)
 * The name "PolyBrowser" as well as logos and images provided are trademarks of [PolySuite, LLC](http://polysuite.com), all rights reserved
