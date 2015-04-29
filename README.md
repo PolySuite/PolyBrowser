@@ -3,6 +3,8 @@
 **The Panoramic Web Browser**</br>
 Let's re-imagine web browsing, together.
 </br></br>
+[**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)</br>
+
 ##A New Way to Browse
 
 <img src="https://polybrowser.com/wp-content/uploads/2014/10/Slide-final4.gif" align="right" hspace="15" vspace="6">
@@ -10,7 +12,6 @@ Let's re-imagine web browsing, together.
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
 
-[**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)
 </br></br>
 
 ##Source Code
