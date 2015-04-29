@@ -1,7 +1,7 @@
 #<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser
 
-
-**Let's reimagine web browsing, together.**
+**The Panoramic Web Browser**</br>
+Let's reimagine web browsing, together.
 </br></br>
 ##A New Way to Browse
 
@@ -9,7 +9,8 @@
 * **Panoramic Navigation** Stitches websites together
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
-* [**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)
+
+[**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)
 </br></br>
 
 ##Source Code
