@@ -24,7 +24,7 @@ Let's re-imagine web browsing, together.
 **Search In The Sidebar:** Access search quickly while still viewing your websites</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628504/58c2bf36-b2f4-11e6-9cd2-7c0b3f7199eb.gif"  hspace="15" vspace="6">
 </br></br>
-</br></br>
+
 
 ##Source Code
 To understand the source code and build PolyBrowser, visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
