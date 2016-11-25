@@ -27,8 +27,7 @@ Let's re-imagine web browsing, together.
 
 
 ##Source Code
-* Full source code is [available on gitHub](https://github.com/PolySuite/PolyBrowser)
-* To understand the source code and build PolyBrowser, visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
+To understand the source code and build PolyBrowser, visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
 </br>
 
 ##Contributing
