@@ -5,7 +5,8 @@
 **The Panoramic Web Browser**</br>
 Let's re-imagine web browsing, together.
 </br></br>
-[**Learn More and Download It at PolyBrowser.com**](https://polybrowser.com)</br>
+* [**Download for Windows**](https://drive.google.com/open?id=0B-vWATSRVN6yS01PSHRYdE9jMzg)</br>
+* [**Download for Windows**](https://drive.google.com/open?id=0B-vWATSRVN6yS01PSHRYdE9jMzg)</br>
 
 ##A New Way to Browse
 
