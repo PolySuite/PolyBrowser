@@ -8,13 +8,14 @@ Let's re-imagine web browsing, together.
 * [**Download for Windows**](https://drive.google.com/open?id=0B-vWATSRVN6yS01PSHRYdE9jMzg)</br>
 * [**Download for Mac**](https://drive.google.com/open?id=0B-vWATSRVN6yZVRnel81Qm8yNzA)</br>
 * [**Download for Linux**](https://drive.google.com/open?id=0B-vWATSRVN6yRUp6VFN4RWVieXc)</br>
-
-###A New Way to Browse
+</br></br>
+##A New Way to Browse
 **Panoramic Navigation** Stitches websites together</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif"  hspace="15" vspace="6">
 </br>
-* **Zoom In and Out** To see all of your websites at once
-* **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
+**Zoom In and Out** To see all of your websites at once
+<img src="https://cloud.githubusercontent.com/assets/4229121/20628508/58c49202-b2f4-11e6-9b5a-a2f64aa7afcf.gif"  hspace="15" vspace="6">
+</br>
 
 </br></br>
 
