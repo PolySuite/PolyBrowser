@@ -12,16 +12,16 @@ Let's re-imagine web browsing, together.
 
 ##A New Way to Browse
 
-**Panoramic Navigation: ** Stitches websites together</br></br>
+**Panoramic Navigation:** Stitches websites together</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif"  hspace="15" vspace="6">
 </br></br>
-**Zoom In and Out: ** To see all of your websites at once</br></br>
+**Zoom In and Out:** To see all of your websites at once</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628508/58c49202-b2f4-11e6-9b5a-a2f64aa7afcf.gif"  hspace="15" vspace="6">
 </br></br>
-**Resize Easily: ** Adjust the size of each website by dragging</br></br>
+**Resize Easily:** Adjust the size of each website by dragging</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628505/58c3fc8e-b2f4-11e6-9139-1c8f7fad4870.gif"  hspace="15" vspace="6">
 </br></br>
-**Search In The Sidebar: ** Access search quickly while still viewing your websites</br></br>
+**Search In The Sidebar:** Access search quickly while still viewing your websites</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628504/58c2bf36-b2f4-11e6-9cd2-7c0b3f7199eb.gif"  hspace="15" vspace="6">
 </br></br>
 </br></br>
