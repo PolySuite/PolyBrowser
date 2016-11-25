@@ -27,12 +27,12 @@ Let's re-imagine web browsing, together.
 
 
 ##Source Code
-* FUll source code is [available on gitHub](https://github.com/PolySuite/PolyBrowser)
+* Full source code is [available on gitHub](https://github.com/PolySuite/PolyBrowser)
 * To understand the source code and build PolyBrowser, visit the [PolyBrowser Wiki](https://github.com/PolySuite/PolyBrowser/wiki)
 </br>
 
 ##Contributing
-All contributions are welcome. Send us a Pull Request.    Submit bugs and feature requests to the Issue Tracker in this repo. For more information, email info (at) polysuite.com.
+PolyBrowser is not being actively developed at this time. Feel free to fork the repository and continue development.  For more information, email polysuite (at) gmail.com.
 
 ##License
 * PolyBrowser is provided under the Mozilla Public License (MPL2.0) (https://www.mozilla.org/MPL/2.0/)
