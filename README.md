@@ -5,9 +5,9 @@
 **The Panoramic Web Browser**</br>
 Let's re-imagine web browsing, together.
 </br></br>
-* [**Download for Windows**](https://drive.google.com/open?id=0B-vWATSRVN6yS01PSHRYdE9jMzg)</br>
-* [**Download for Mac**](https://drive.google.com/open?id=0B-vWATSRVN6yZVRnel81Qm8yNzA)</br>
-* [**Download for Linux**](https://drive.google.com/open?id=0B-vWATSRVN6yRUp6VFN4RWVieXc)</br>
+* [**Download App for Windows**](https://drive.google.com/open?id=0B-vWATSRVN6yS01PSHRYdE9jMzg)</br>
+* [**Download App Installer for Mac**](https://drive.google.com/open?id=0B-vWATSRVN6yZVRnel81Qm8yNzA)</br>
+* [**Download App for Linux**](https://drive.google.com/open?id=0B-vWATSRVN6yRUp6VFN4RWVieXc)</br>
 </br>
 
 ##A New Way to Browse
