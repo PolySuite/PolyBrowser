@@ -11,7 +11,7 @@ Let's re-imagine web browsing, together.
 
 ##A New Way to Browse
 **Panoramic Navigation** Stitches websites together
-<img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif" align="right" hspace="15" vspace="6">
+<img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif">
 
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
