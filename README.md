@@ -10,9 +10,9 @@ Let's re-imagine web browsing, together.
 * [**Download for Linux**](https://drive.google.com/open?id=0B-vWATSRVN6yRUp6VFN4RWVieXc)</br>
 
 ##A New Way to Browse
-**Panoramic Navigation** Stitches websites together
-<img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif">
-
+**Panoramic Navigation** Stitches websites together</br>
+<img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif" align="left" hspace="15" vspace="6">
+</br>
 * **Zoom In and Out** To see all of your websites at once
 * **Save Tabs to the Cloud** Capture and share your tabs as a [PolyMark](http://polymarks.com)
 
