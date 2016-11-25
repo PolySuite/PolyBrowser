@@ -12,7 +12,7 @@ Let's re-imagine web browsing, together.
 
 ##A New Way to Browse
 
-*Panoramic Navigation: * Stitches websites together</br></br>
+**Panoramic Navigation: ** Stitches websites together</br></br>
 <img src="https://cloud.githubusercontent.com/assets/4229121/20628506/58c4422a-b2f4-11e6-9e9b-59a3b5bdcbc4.gif"  hspace="15" vspace="6">
 </br></br>
 **Zoom In and Out: ** To see all of your websites at once</br></br>
