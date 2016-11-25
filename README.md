@@ -1,3 +1,5 @@
+<img src="https://cloud.githubusercontent.com/assets/4229121/20628567/b53b7a6e-b2f4-11e6-912a-2bb0d27b587f.jpg" align="center">
+
 #<a href="https://polybrowser.com"><img src="http://polybrowser.com/wp-content/uploads/2014/02/Lens-Logo-106.png" align="right" hspace="10" vspace="6"></a>PolyBrowser
 
 **The Panoramic Web Browser**</br>
